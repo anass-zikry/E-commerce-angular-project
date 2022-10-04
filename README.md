@@ -5,3 +5,4 @@
 #### run npm install in backend folder and in project-frontend folder to install node-modules.
 #### run backend app using "nodemon server.js" command in backend folder.
 #### run frontend angular app using "ng serve" command in project-frontend folder.
+#### to add an admin account go to "/admin-register"

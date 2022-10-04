@@ -1,0 +1,13 @@
+main {
+  width: 100vw;
+  text-align: center;
+}
+main h2 {
+  padding: 1vw;
+}
+
+body {
+  background-image: url(/assets/images/gabriel-komorov-p5N3PVOOF_0-unsplash.jpg);
+  /* height: 100vh; */
+  width: 100%;
+}

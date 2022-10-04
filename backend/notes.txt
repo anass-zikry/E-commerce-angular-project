@@ -1,0 +1,2 @@
+object id validation:
+	if(id.length != 24){return {message:"Invalid product id!",status:false}}

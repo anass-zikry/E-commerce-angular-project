@@ -1,0 +1,16 @@
+<div class="container">
+  <h3>Sign in</h3>
+  <h4 *ngIf="status">{{status}}</h4>
+  <form action="">
+    <div class="username">
+      <!-- <label for="userName">Username:</label> -->
+      <input type="text" id="email" placeholder="Username" name="username" [(ngModel)]="username" />
+    </div>
+    <div class="password">
+      <!-- <label for="password">Password: </label> -->
+      <input type="password" id="password" placeholder="Password" name="password" [(ngModel)]="password" />
+    </div>
+    <button type="button" id="sign-in-button" (click)="signIn()">Sign in</button>
+  </form>
+  <p>Don't have an account? <a routerLink="sign-up">Sign up</a></p>
+</div>

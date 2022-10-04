@@ -1,0 +1,34 @@
+.product img {
+  max-width: 100%;
+}
+.product {
+  background: white;
+  text-align: center;
+  transition: ease-in-out 0.3s;
+  overflow: hidden;
+  margin: 20px 30px;
+  padding: 20px;
+}
+.product:hover {
+  box-shadow: 5px 5px 5px darkgrey;
+  cursor: pointer;
+}
+.product p {
+  font-size: 20px;
+}
+
+.product button {
+  width: 120px;
+  height: fit-content;
+  align-self: flex-end;
+  padding: 8px 14px;
+  font-size: 18px;
+  background: #d8c3a5;
+  transition: ease-in-out 0.3s;
+  border: 1px solid #e85a4f;
+  border-radius: 12px;
+}
+.product button:hover {
+  background: #e98074;
+  cursor: pointer;
+}

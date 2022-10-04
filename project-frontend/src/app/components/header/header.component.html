@@ -1,0 +1,30 @@
+<header>
+  <div class="navbar">
+    <div><h2>Wafrly</h2></div>
+
+    <ul>
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="product-details">Products</a></li>
+      <li><a routerLink="about-us">About us</a></li>
+      <li *ngIf="getLoggedIn()"><a routerLink="cart">Cart</a></li>
+      <li *ngIf="!getLoggedIn()"><a routerLink="sign-in">Log in</a></li>
+      <li *ngIf="!getLoggedIn()"><a routerLink="sign-up">Sign up</a></li>
+      <li *ngIf="getLoggedIn()"></li>
+
+        <li *ngIf="getLoggedIn()">
+          <select (change)="select($event)">
+            <option value="" disabled selected class="profile"><img src="assets/images/profile.png" alt=""></option>
+            <option value="profile">Profile</option>
+            <option *ngIf="getIsAdmin()" value="add-product">Manage Products</option>
+            <option value="logout">Log out</option>
+          </select>
+          <!-- <ul>
+            <li><a routerLink="profile">Profile</a></li>
+            <li><a routerLink="add-product">Manage Products</a></li>
+            <li><a routerLink="/" (click)="logout()">Log out</a></li>
+          </ul> -->
+        </li>
+
+    </ul>
+  </div>
+</header>

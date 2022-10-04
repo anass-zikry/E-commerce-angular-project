@@ -1,0 +1,38 @@
+<div>
+<h2>Add Product</h2>
+<form [formGroup]="productform">
+    <label for="product-name">Product name:</label>
+    <input type="text" name="product-name" formControlName="name">
+    <br>
+    <label for="price">Price</label>
+    <input type="number" name="price" formControlName="price">
+    <br>
+    <label for="discountRatio">Discount</label>
+    <input type="number" name="discountRatio" formControlName="discountRatio">
+    <br>
+    <!-- <label for="category">Category</label> -->
+    <label for="category">Category</label>
+    <select name="category" id="" formControlName="category">
+        <option value="{{null}}" selected disabled>Category</option>
+        <option value="{{c}}" *ngFor="let c of getCategoryTitles()" >{{c}}</option>
+    </select>
+    <br>
+    <label for="brand">Brand</label>
+    <select name="brand" formControlName="brand">
+        <option value="{{null}}" selected disabled>Brand</option>
+        <option value="{{b}}" *ngFor="let b of getBrandTitles()" >{{b}}</option>
+    </select>
+    <br>
+    <label for="color">Color</label>
+    <input type="text" name="color">
+    <br>
+    <label for="size">Size</label>
+    <input type="text" name="size">
+    <br>
+    <label for="imageUrl">Image URL</label>
+    <input type="text" name="imageUrl">
+    <br>
+    <button type="submit" (click)="addProduct()">Add Product</button>
+    <button (click)="fill()">Fill</button>
+</form>
+</div>

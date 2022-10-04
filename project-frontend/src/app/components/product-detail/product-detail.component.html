@@ -1,0 +1,45 @@
+<div class="small-container single-product">
+  <div class="row">
+    <div class="column2">
+      <img
+        [src]="product.imageUrl"
+        id="product1"
+      />
+    </div>
+    <div class="column2">
+      <!-- <p>home / T-shirt</p> -->
+      <h1>{{product.name}}</h1>
+      <h4>{{getPrice()[0] | currency}}</h4>
+      <!-- <h4 *ngIf="product.discountRatio > 0">{{getPrice()[1] | currency}}</h4> -->
+      <select name="size" required>
+        <ng-container *ngFor="let size of product.size">
+        <option>{{size}}</option>
+      </ng-container>
+      </select>
+      <select name="color" required>
+        <ng-container *ngFor="let color of product.color">
+        <option>{{color}}</option>
+        </ng-container>
+      </select>
+      <input type="number" value="1" max="10" />
+      <button>Add to cart</button>
+      <br />
+    </div>
+  </div>
+</div>
+<hr />
+<div class="details">
+  <h3>Product details <i class="fa fa-indent"></i></h3>
+  <p>
+    Get a new quality shirt for the hot summer our prices throw out the
+    competition
+  </p>
+</div>
+
+<div class="more-details">
+  <hr />
+  <ul>
+    <li>Brand: {{product.brand}}</li>
+    <li>Category: {{product.category}}</li>
+  </ul>
+</div>

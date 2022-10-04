@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #8e8d8a;
+  /* height: 20%; */
+}
+.navbar ul li {
+  display: inline-block;
+  margin: 20px 40px;
+}
+.navbar h2 {
+  font-size: 32px;
+  color: #d8c3a5;
+  font-weight: 700;
+  margin: 0px 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+body {
+  min-height: 100vh;
+}
+.navbar ul li a {
+  text-decoration: none;
+  color: #d8c3a5;
+  font-size: 18px;
+}
+.navbar ul li a:hover {
+  color: #e85a4f;
+}

@@ -1,0 +1,35 @@
+.contact-us {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  margin: 12px;
+}
+.contact-us h1 {
+  align-self: center;
+  font-size: 34px;
+  font-weight: bold;
+}
+.contact-us-form {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+.contact-us-form label {
+  font-size: 20px;
+}
+#message {
+  font-size: 16px;
+}
+#contact-us-button {
+  margin-left: auto;
+  margin-top: 6px;
+  padding: 12px 24px;
+  font-size: 22px;
+  background: #d8c3a5;
+  transition: ease-in-out 0.3s;
+  border: 1px solid #e85a4f;
+  border-radius: 12px;
+}
+#contact-us-button:hover {
+  background: #e98074;
+}

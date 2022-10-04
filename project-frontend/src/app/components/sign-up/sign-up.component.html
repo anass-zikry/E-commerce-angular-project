@@ -1,0 +1,21 @@
+<div class="signup">
+  <img src="assets/images/contract.png" alt="contract photo" />
+  <h1>Sign Up Now</h1>
+  <h3 *ngIf="status">{{status}}</h3>
+  <form action="">
+    <div class="inputbox">
+      <input type="text" placeholder="Username" name="username" [(ngModel)]="username" />
+      <input type="password" placeholder="password" name="password" [(ngModel)]="password" />
+    </div>
+
+    <p>
+      <span><input type="checkbox" /></span> I agree to the terms of services
+    </p>
+
+    <button (click)="signup()">Sign up</button>
+    <hr />
+    <p>Or</p>
+    <button>Login with Google</button>
+    <p>Do you have an account? <a routerLink="sign-in">Sign in</a></p>
+  </form>
+</div>

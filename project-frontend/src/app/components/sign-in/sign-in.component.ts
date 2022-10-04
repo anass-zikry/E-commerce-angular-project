@@ -20,13 +20,7 @@ export class SignInComponent implements OnInit {
       if (response.status) {
         this.user.storeToken(response.token.toString());
         this.user.setLoggedIn();
-        this.user.adminCheck().subscribe((response: any) => {
-          if (response.isAdmin) {
-            this.user.setAdmin();
-          } else {
-            this.status = response.message;
-          }
-        });
+        this.user.checkToken();
         this.router.navigate(['']);
       } else {
         this.status = response.message;

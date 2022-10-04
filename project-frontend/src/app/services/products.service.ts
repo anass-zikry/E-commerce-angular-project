@@ -7,12 +7,15 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductsService {
   products: Array<Product> = [];
+  productMessage:string= "";
   constructor(private http:HttpClient) { this.getProducts()}
   retrieveProducts(){
     return this.http.get(`${environment.websiteURL}/browse-products`)
   }
     
-  
+  get addProductMessage(){
+    return this.productMessage;
+  }
   getProducts() {
     // this.retrieveProducts();
      return this.retrieveProducts().subscribe((response:any)=>{
@@ -20,8 +23,12 @@ export class ProductsService {
     });
   }
   addProduct(product:Product){
-    // this.products.push(product);
     
+    this.http.post(`${environment.adminURL}/add-product`,{data:JSON.stringify(product)}).subscribe((response:any)=>{
+      if(response.status){
+        this.productMessage = response.message;
+      }
+    })
   }
   deleteProduct(id:string){
     this.products.splice(this.products.findIndex((x)=>x._id == id),1);

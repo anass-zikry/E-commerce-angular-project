@@ -13,7 +13,7 @@
 
         <li *ngIf="getLoggedIn()">
           <select (change)="select($event)">
-            <option value="" disabled selected class="profile"><img src="assets/images/profile.png" alt=""></option>
+            <option value="{{null}}" selected class="profile"><img src="assets/images/profile.png" alt=""></option>
             <option value="profile">Profile</option>
             <option *ngIf="getIsAdmin()" value="add-product">Manage Products</option>
             <option value="logout">Log out</option>

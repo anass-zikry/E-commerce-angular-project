@@ -8,7 +8,7 @@ class ProductController {
     let product = new ProductService();
     let {data} = req.body;
 
-    res.json(await product.add(data));
+    res.json(await product.add(JSON.parse(data)));
   }
 
   async find(req, res) {

@@ -1,6 +1,15 @@
 <div>
 <h2>Add Product</h2>
-<form [formGroup]="productform">
+<form [formGroup]="productform" (ngSubmit)="addProduct()">
+    {{productform.status | json}}
+    <!-- {{productform.controls['price'].errors |json}}
+    {{productform.controls['discountRatio'].errors |json}}
+    {{productform.controls['category'].errors |json}}
+    {{productform.controls['brand'].errors |json}}
+    {{productform.controls['color'].errors |json}}
+    {{productform.controls['size'].errors |json}}
+    {{productform.controls['imageUrl'].errors |json}} -->
+    <br>
     <label for="product-name">Product name:</label>
     <input type="text" name="product-name" formControlName="name">
     <br>
@@ -23,16 +32,31 @@
         <option value="{{b}}" *ngFor="let b of getBrandTitles()" >{{b}}</option>
     </select>
     <br>
+    {{selectedColors | json}}<button (click)="deleteColors()" type="button">Remove</button>
+    <br>
     <label for="color">Color</label>
-    <input type="text" name="color">
+    <!-- <input type="text" name="color"> -->
+    <select name="color" (change)="colorSelect($event)" formControlName="color">
+        <option value="{{null}}" selected disabled>Color</option>
+        <option value="{{c}}" *ngFor="let c of colors" >{{c}}</option>
+    </select>
+    <br>
+    {{selectedSizes | json}}<button (click)="deleteSizes()" type="button">Remove</button>
     <br>
     <label for="size">Size</label>
-    <input type="text" name="size">
+    <select name="size" (change)="sizeSelect($event)" formControlName="size">
+        <option value="{{null}}" selected disabled>Size</option>
+        <option value="{{s}}" *ngFor="let s of sizes" >{{s}}</option>
+    </select>
+    <br>
+    <input type="checkbox" name="isFeatured" formControlName="isFeatured">
+    <label for="isFeatured">Featured</label>
     <br>
     <label for="imageUrl">Image URL</label>
-    <input type="text" name="imageUrl">
+    <input type="text" name="imageUrl" formControlName="imageUrl" >
     <br>
-    <button type="submit" (click)="addProduct()">Add Product</button>
-    <button (click)="fill()">Fill</button>
+    <button type="submit" [disabled]="getDisableButton()">Add Product</button>
+    <br>
+    <p>{{getStatus()}}</p>
 </form>
 </div>

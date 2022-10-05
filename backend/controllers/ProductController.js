@@ -1,7 +1,4 @@
-// const {ProductService} = require("../services/ProductService")
-const { ObjectId } = require("mongodb");
 const { ProductService } = require("../services/ProductService");
-const jwt = require("jsonwebtoken");
 
 class ProductController {
   async add(req, res) {

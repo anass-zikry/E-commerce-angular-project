@@ -2,24 +2,38 @@
   <h3>Your Cart</h3>
   <div class="cart-list">
     <ul>
-      <li class="cart-list-item" *ngFor="let item of cart,let i = index">
+      <li
+        class="cart-list-item"
+        *ngFor="let item of cart.cartItems; let i = index"
+      >
         <div class="list-p1">
           <img [src]="item.product.imageUrl" alt="" />
-          <p id="item-title">{{item.product.name}}</p>
-          <p *ngIf="item.product.discountRatio == 0">{{item.product.price | currency}}</p>
-          <p *ngIf="item.product.discountRatio != 0">{{item.product.price * (1 - item.product.discountRatio) | currency}}</p>
+          <p id="item-title">{{ item.product.name }}</p>
+          <p *ngIf="item.product.discountRatio == 0">
+            {{ item.product.price | currency }}
+          </p>
+          <p *ngIf="item.product.discountRatio != 0">
+            {{
+              item.product.price * (1 - item.product.discountRatio) | currency
+            }}
+          </p>
         </div>
         <div class="list-p2">
-          <p id="item-amount">x{{item.count}}</p>
-          <button id="remove-cart-item" (click)="deleteProduct(cart[i].product)">Remove</button>
+          <p id="item-amount">x{{ item.count }}</p>
+          <button
+            id="remove-cart-item"
+            (click)="deleteProduct(cart.cartItems[i].product._id)"
+          >
+            Remove
+          </button>
         </div>
       </li>
     </ul>
     <div class="cart-total">
-      <p>Subtotal: {{cartTotal | currency}}</p>
-      <p>Shipping: {{shippingCost | currency}}</p>
+      <p>Subtotal: {{ getTotal() | currency }}</p>
+      <p>Shipping: {{ shippingCost | currency }}</p>
       <br />
-      <h3>Total: {{cartTotal + shippingCost | currency}}</h3>
+      <h3>Total: {{ getTotal() + shippingCost | currency }}</h3>
     </div>
   </div>
 </div>

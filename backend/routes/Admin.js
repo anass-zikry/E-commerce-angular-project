@@ -11,7 +11,7 @@ let brand = new BrandController();
 let category = new CategoryController();
 
 //Product
-adminApp.get("/find-product", product.find);
+adminApp.post("/find-product", product.find);
 adminApp.get("/browse-products", product.listAll);
 adminApp.delete("/del-product", product.delete);
 adminApp.post("/mod-product", product.modify);

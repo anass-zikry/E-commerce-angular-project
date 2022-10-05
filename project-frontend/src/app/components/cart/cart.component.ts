@@ -4,15 +4,22 @@ import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  cart = this.cartService.cart;
-  shippingCost:number = 30;
-  constructor(private cartService:CartService) { }
-
-  ngOnInit(): void {
+  constructor(private cartService: CartService) {
+    this.cartService.getCart();
   }
-  deleteProduct = this.cartService.deleteProduct;
-  cartTotal = this.cartService.getTotal();
+  cart = this.cartService.thisCart;
+  shippingCost: number = this.cartService.shipping;
+  // cartTotal:number = this.cartService.total;
+
+  ngOnInit(): void {console.log(this.cartService.total);
+  }
+  deleteProduct(productId:string){
+    this.cartService.deleteProduct(productId);
+  }
+  getTotal():number{
+    return this.cartService.total;
+  }
 }

@@ -25,7 +25,7 @@ export class ProductsService {
   addProduct(product:Product){
     
     this.http.post(`${environment.adminURL}/add-product`,{data:JSON.stringify(product)}).subscribe((response:any)=>{
-      if(response.status){
+      if(response.success){
         this.productMessage = response.message;
       }
     })
@@ -34,10 +34,7 @@ export class ProductsService {
     this.products.splice(this.products.findIndex((x)=>x._id == id),1);
   }
   getProductById(id:string|null):Product{
-    // if(!id)return ;
-    
     let filtered = this.products.filter((p)=> p._id == id)
-    // if(filtered.length != 1)
     return filtered[0];
   }
 }

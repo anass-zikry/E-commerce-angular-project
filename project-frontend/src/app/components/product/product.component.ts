@@ -6,20 +6,26 @@ import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  @Input() product:Product = {} as Product;
-  constructor(private cartService:CartService,private router:Router,private route:ActivatedRoute) { }
+  @Input() product: Product = {} as Product;
+  constructor(
+    private cartService: CartService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  addToCart() {
+    this.cartService.addProduct(this.product._id);
+    this.cartService.getTotal();
+    // console.log(this.cartService.cart);
   }
-  addToCart(){
-    this.cartService.addProduct(this.product)
-    console.log(this.cartService.cart);
-    
-  }
-  productClickHandler(){
-    this.router.navigate(['product-detail',{id:this.product._id}],{relativeTo: this.route, skipLocationChange: true})
+  productClickHandler() {
+    this.router.navigate(['product-detail', { id: this.product._id }], {
+      relativeTo: this.route,
+      skipLocationChange: true,
+    });
   }
 }

@@ -63,7 +63,7 @@ export class UsersService {
     this.checkTokenExpire().subscribe((response: any) => {
       if (response.expired) {
         this.loggedIn = false;
-      } else if (response.status) {
+      } else if (response.success) {
         this.loggedIn = true;
         this.adminCheck().subscribe((response: any) => {
           if (response.isAdmin) {
@@ -87,7 +87,7 @@ export class UsersService {
   //     this.checkTokenExpire().subscribe((response: any) => {
 
   //       if(response.expired){x=false;subject.next(x)}
-  //       else if(response.status){x=true;subject.next(x);this.loggedIn=true}
+  //       else if(response.success){x=true;subject.next(x);this.loggedIn=true}
   //       // x = response;
   //       // console.log(response);
   //     });

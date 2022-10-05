@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 class AuthService {
   async register(userData) {
     let user = new User();
-    if (await this.usernameExist(userData.username)) return {message:"username taken",status:false};
+    if (await this.usernameExist(userData.username)) return {message:"username taken",success:false};
     const encPassword = await this.encrypt(userData.password);
     const data = {
       username: userData.username,
@@ -15,17 +15,17 @@ class AuthService {
       isActive: true,
     };
     await user.insertOne(data);
-    return {message:"User Registered!",status:true};
+    return {message:"User Registered!",success:true};
   }
   async login(username, password) {
     // let user = new User();
     // console.log(username,password);
     let currentUser = await this.findUser(username);
-    if (!currentUser) return { message: "Incorrect username!" ,status:false};
+    if (!currentUser) return { message: "Incorrect username!" ,success:false};
     if (!currentUser.isActive)
-      return { message: "Account has been deactivated" ,status:false};
+      return { message: "Account has been deactivated" ,success:false};
     if (!(await this.comparePassword(password, currentUser.password)))
-      return { message: "Incorrect password!" ,status:false};
+      return { message: "Incorrect password!" ,success:false};
     return {token:jwt.sign(
       {
         username: currentUser.username,
@@ -33,31 +33,31 @@ class AuthService {
         exp: Math.floor(Date.now() / 1000) + 60 * 60,
       },
       "secret"
-    ),status:true};
+    ),success:true};
   }
   async delete(id) {
     let user = new User();
-    if (!this.findUserById(id)) return { message: "User not found" ,status:false};
+    if (!this.findUserById(id)) return { message: "User not found" ,success:false};
 
     await user.updateOne(id, { isActive: false });
-    return { message: "User Deleted!" ,status:true};
+    return { message: "User Deleted!" ,success:true};
   }
   async resetPassword(currentUser, oldPassword, newPassword) {
     let user = new User();
     // let currentUser = await this.findUserById(token.id);
-    if (!currentUser) return { message: "User not found" ,status:false};
+    if (!currentUser) return { message: "User not found" ,success:false};
     if (!(await this.comparePassword(oldPassword, currentUser.password)))
-      return { message: "Incorrect password!" ,status:false};
+      return { message: "Incorrect password!" ,success:false};
     const encPassword = await this.encrypt(newPassword);
     // console.log(currentUser);
-    return {message:await user.updateOne(currentUser._id, { password: encPassword }),status:true};
+    return {message:await user.updateOne(currentUser._id, { password: encPassword }),success:true};
   }
   async forgotPassword(id, newPassword) {
     let user = new User();
-    if (!(await this.findUserById(id))) return { message: "User not found" ,status:false};
+    if (!(await this.findUserById(id))) return { message: "User not found" ,success:false};
     return {message:await user.updateOne(id, {
       password: await this.encrypt(newPassword),
-    }),status:true};
+    }),success:true};
   }
   async listUsers() {
     let user = new User();

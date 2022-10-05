@@ -20,7 +20,7 @@ class UserController {
     let { username, password } = req.body;
     let user = await auth.findUser(username);
     if (!user.isAdmin) {
-      res.json({ message: "Not an Admin!", status: false });
+      res.json({ message: "Not an Admin!", success: false });
       return;
     }
     res.json(await auth.login(username, password));
@@ -42,11 +42,11 @@ class UserController {
     let auth = new AuthService();
     let message = {
       message: "Admin not verified",
-      status: false,
+      success: false,
       isAdmin: false,
     };
     if (req.user.isAdmin) {
-      message = { message: "Admin verified", status: true, isAdmin: true };
+      message = { message: "Admin verified", success: true, isAdmin: true };
     }
     res.json(message);
   }

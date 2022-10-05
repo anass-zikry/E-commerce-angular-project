@@ -10,7 +10,7 @@ let cart = new CartController()
 let product = new ProductController()
 
 Website.get("/verify-token",(req,res)=>{
-    res.json({status:true})
+    res.json({success:true})
   })
 //User
 Website.post("/register",user.addUser)
@@ -25,7 +25,9 @@ Website.get("/browse-products", product.listAll)
 Website.post("/new-cart",cart.create)
 Website.get("/find-cart",cart.find)
 Website.post("/update-cart",cart.update)
-Website.post("/add-product",cart.addProduct)
+Website.post("/cart-addproduct",cart.addProduct)
+Website.post("/cart-removeproduct",cart.removeProduct)
+Website.post("/cart-deleteproduct",cart.deleteProduct)
 Website.delete("/delete-cart",cart.delete)
 
 module.exports = {

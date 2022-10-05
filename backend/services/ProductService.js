@@ -10,7 +10,7 @@ class ProductService {
     await product.insertOne(data);
     return {
       message: "product added!",
-      status: true,
+      success: true,
     };
   }
   async findById(id) {
@@ -24,28 +24,28 @@ class ProductService {
   async modify(id, data) {
     let product = new Product();
     if (id.length != 24) {
-      return { message: "Invalid product id!", status: false };
+      return { message: "Invalid product id!", success: false };
     }
     let result = await product.updateOne(id, data);
     // console.log(result);
     if (result.modifiedCount > 0) {
-      return { message: "Product modified successfuly!", status: true };
+      return { message: "Product modified successfuly!", success: true };
     } else if (result.matchedCount > 0) {
-      return { message: "Nothing modified", status: true };
+      return { message: "Nothing modified", success: true };
     } else {
-      return { message: "Something went wrong!", status: false };
+      return { message: "Something went wrong!", success: false };
     }
   }
   async delete(id) {
     let product = new Product();
     if (id.length != 24) {
-      return { message: "Invalid product id!", status: false };
+      return { message: "Invalid product id!", success: false };
     }
     let result = await product.deleteOne(id);
     if (result.deletedCount == 1) {
-      return { message: "Product deleted!", status: true };
+      return { message: "Product deleted!", success: true };
     } else {
-      return { message: "Something went wrong!", status: false };
+      return { message: "Something went wrong!", success: false };
     }
   }
 }

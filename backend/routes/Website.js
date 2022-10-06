@@ -18,6 +18,7 @@ Website.delete("/delete-user",user.deleteUser)
 Website.post("/reset-password",user.resetPassword)
 Website.post("/forgot-password",user.forgotPassword)
 Website.post("/login",user.login)
+Website.get("/user",user.getUserData)
 //Products
 Website.get("/browse-products", product.listAll)
 

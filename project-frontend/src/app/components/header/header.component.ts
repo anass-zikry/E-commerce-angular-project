@@ -21,13 +21,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  logout(){
-    this.user.deleteToken();
-  }
   select(event:any){
     if(event.target.value == 'logout'){
-      this.user.deleteToken();
+      this.user.logout();
       event.target.value = "/";
+      window.location.reload();
+    }
+    if(event.target.value == 'profile'){
+      this.user.getUser();
     }
     this.router.navigateByUrl(event.target.value);
   }

@@ -122,11 +122,10 @@ export class CartService {
       .subscribe((response: any) => {
         if (response.success) {
           let index: number = this.cart.cartItems.findIndex((x) => {
-            x.product._id == productId;
+            return (x.product._id == productId);
           });
           this.cart.cartItems.splice(index, 1);
         }
-        this.getTotal();
       });
   }
   getTotal(): void {

@@ -2,15 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
+  user:User = {} as User;
   loggedIn: boolean = false;
   isAdmin: boolean = false;
   constructor(private http: HttpClient) {}
-
+  get thisUser(){
+    return this.user;
+  }
   get LoginStatus(): boolean {
     return this.loggedIn;
   }
@@ -21,6 +25,15 @@ export class UsersService {
   signup(username: string, password: string) {
     let data = JSON.stringify({ username: username, password: password });
     return this.http.post(`${environment.websiteURL}/register`, data);
+  }
+  getUser(){
+    this.http.get(`${environment.websiteURL}/user`).subscribe((response:any)=>{
+      if(response.success){
+        this.user._id = response.user._id;
+        this.user.isActive = response.user.isActive;
+        this.user.username = response.user.username;
+      }
+    })
   }
   adminSignup(username: string, password: string) {
     let data = JSON.stringify({ username: username, password: password });
@@ -47,9 +60,12 @@ export class UsersService {
     if (!token) return 'false';
     return token;
   }
-  deleteToken(): void {
+  logout(): void {
     localStorage.removeItem('token');
     this.loggedIn = false;
+    this.user = {} as User;
+    this.isAdmin = false;
+    
   }
   checkTokenExpire() {
     return this.http.get(`${environment.websiteURL}/verify-token`);
@@ -69,6 +85,8 @@ export class UsersService {
           if (response.isAdmin) {
             this.setAdmin();
           }
+          console.log(response);
+          
         });
       }
       console.log(response);
@@ -100,6 +118,5 @@ export class UsersService {
   // }
   setLoggedIn() {
     this.loggedIn = true;
-    // localStorage.setItem('isLoggedIn',)
   }
 }

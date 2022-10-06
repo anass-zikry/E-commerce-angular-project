@@ -2,7 +2,7 @@
 <div class="profile">
     <div class="name-container">
       <img src="/assets/images/fl.jpg" alt="" />
-      <h2 id="profile-username">Mazen</h2>
+      <h2 id="profile-username">{{getUsername()}}</h2>
       <button id="edit-profile-button">Edit</button>
     </div>
     <div class="address-container">
@@ -17,5 +17,5 @@
       </p>
       <button id="edit-address-button">Edit Address</button>
     </div>
-    <p>Encountered a problem? <a href="">Contact us</a></p>
+    <p>Encountered a problem? <a routerLink="contact-us">Contact us</a></p>
   </div>

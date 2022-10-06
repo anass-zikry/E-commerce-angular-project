@@ -39,7 +39,6 @@ class UserController {
     res.json(await auth.delete(id));
   }
   async verifyAdmin(req, res) {
-    let auth = new AuthService();
     let message = {
       message: "Admin not verified",
       success: false,
@@ -61,7 +60,9 @@ class UserController {
     const { id, newPassword } = req.body;
     res.json(await auth.forgotPassword(id, newPassword));
   }
-
+  getUserData(req,res){
+    res.json({user:req.user,success:true});
+  }
   async listAll(req, res) {
     let auth = new AuthService();
     // let decToken = req.user;

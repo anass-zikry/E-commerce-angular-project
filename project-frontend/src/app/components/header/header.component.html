@@ -9,7 +9,6 @@
       <li *ngIf="getLoggedIn()"><a routerLink="cart">Cart</a></li>
       <li *ngIf="!getLoggedIn()"><a routerLink="sign-in">Log in</a></li>
       <li *ngIf="!getLoggedIn()"><a routerLink="sign-up">Sign up</a></li>
-      <li *ngIf="getLoggedIn()"></li>
 
         <li *ngIf="getLoggedIn()">
           <select (change)="select($event)">

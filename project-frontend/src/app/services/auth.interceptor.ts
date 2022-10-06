@@ -7,11 +7,14 @@ import { UsersService } from './users.service'
 @Injectable()
 export class authInterceptor implements HttpInterceptor {
     constructor(private user:UsersService){}
-    token = this.user.getToken();
+    
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        const token = this.user.getToken();
         req = req.clone({headers:req.headers.set('Content-Type','application/json')})
-        if(!this.token){return next.handle(req)}
-        req = req.clone({headers:req.headers.set('Authorization',this.token)})
+        console.log(token == 'false');
+        
+        if(token == 'false'){return next.handle(req)}
+        req = req.clone({headers:req.headers.set('Authorization',token)})
           
           return next.handle(req);
     }

@@ -15,7 +15,7 @@ async function tokenMiddleware(req,res,next){
     //     next();
     // }
     
-    // console.log(req.headers);
+    console.log(req.headers.authorization);
     let dectoken;
     try {
         dectoken = jwt.verify(token,"secret");
@@ -25,6 +25,7 @@ async function tokenMiddleware(req,res,next){
             res.json({expired:true})
             return;
         }
+        console.log(dectoken);
         return next(error);
         
     }

@@ -4,7 +4,7 @@
     <ul>
       <li
         class="cart-list-item"
-        *ngFor="let item of cart.cartItems; let i = index"
+        *ngFor="let item of getCart().cartItems; let i = index"
       >
         <div class="list-p1">
           <img [src]="item.product.imageUrl" alt="" />
@@ -22,7 +22,7 @@
           <p id="item-amount">x{{ item.count }}</p>
           <button
             id="remove-cart-item"
-            (click)="deleteProduct(cart.cartItems[i].product._id)"
+            (click)="deleteProduct(item.product._id)"
           >
             Remove
           </button>

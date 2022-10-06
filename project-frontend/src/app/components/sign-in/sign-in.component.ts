@@ -21,8 +21,9 @@ export class SignInComponent implements OnInit {
       if (response.success) {
         this.user.storeToken(response.token.toString());
         this.user.setLoggedIn();
+        this.user.getUser();
         this.user.checkToken();
-        // this.cartService.getCart();
+        this.cartService.getCart();
         this.router.navigate(['']);
       } else {
         this.status = response.message;

@@ -20,7 +20,7 @@
     max-height: 20vh;
     display: flex;
     border: 1px solid black;
-    width: 75%;
+    width: 65vw;
     box-shadow: rgba(0, 0, 0, 0.75);
     border-radius: 6px;
     overflow: hidden;
@@ -33,6 +33,7 @@
   }
   .list-p1 {
     display: flex;
+    
   }
   .list-p1 p{
     align-self: center;

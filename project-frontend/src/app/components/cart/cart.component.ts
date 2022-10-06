@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
   shippingCost: number = this.cartService.shipping;
   // cartTotal:number = this.cartService.total;
 
-  ngOnInit(): void {console.log(this.cartService.total);
+  ngOnInit(): void {
   }
   deleteProduct(productId:string){
     this.cartService.deleteProduct(productId);

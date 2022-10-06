@@ -17,7 +17,7 @@ export class SignUpComponent implements OnInit {
   }
   signup(){
     this.user.signup(this.username,this.password).subscribe((response:any)=>{
-      if(response.status){this.router.navigateByUrl('sign-in');}
+      if(response.success){this.router.navigateByUrl('sign-in');}
       else{this.status=response.message}
       
     })

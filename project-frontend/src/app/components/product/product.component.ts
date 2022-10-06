@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { CartService } from 'src/app/services/cart.service';
@@ -10,6 +10,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProductComponent implements OnInit {
   @Input() product: Product = {} as Product;
+  @Output() addToCart: EventEmitter<string> = new EventEmitter;
   constructor(
     private cartService: CartService,
     private router: Router,
@@ -17,13 +18,12 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-  addToCart() {
-    this.cartService.addProduct(this.product._id);
-    this.cartService.getTotal();
-    // console.log(this.cartService.cart);
+  add() {
+    this.addToCart.emit(this.product._id)
   }
+
   productClickHandler() {
-    this.router.navigate(['product-detail', { id: this.product._id }], {
+    this.router.navigate(['/product-detail', { id: this.product._id }], {
       relativeTo: this.route,
       skipLocationChange: true,
     });

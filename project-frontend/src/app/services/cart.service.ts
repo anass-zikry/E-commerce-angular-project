@@ -1,9 +1,12 @@
 import { HttpClient } from '@angular/common/http';
+import { ReturnStatement } from '@angular/compiler';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Cart, CartItem } from '../interfaces/cart';
 import { Product } from '../interfaces/product';
 import { ProductsService } from './products.service';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,8 +24,12 @@ export class CartService {
   get total() {
     return this.cartTotal;
   }
-  constructor(private http: HttpClient, private product: ProductsService) {
-  }
+  constructor(
+    private http: HttpClient,
+    private product: ProductsService,
+    private user: UsersService,
+    private router: Router
+  ) {}
   findCart() {
     return this.http.get(`${environment.websiteURL}/find-cart`);
   }
@@ -63,6 +70,10 @@ export class CartService {
     });
   }
   addProduct(productId: string) {
+    if (!this.user.LoginStatus) {
+      this.router.navigateByUrl('sign-in',{skipLocationChange:true});
+      return;
+    }
     this.http
       .post(
         `${environment.websiteURL}/cart-addproduct`,

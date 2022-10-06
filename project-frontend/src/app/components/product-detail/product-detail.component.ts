@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -10,17 +11,8 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class ProductDetailComponent implements OnInit {
   product: Product = {} as Product;
-  // {name: 'Product 1',
-  // price: 100,
-  // discountRatio: 0,
-  // category: 'sports',
-  // brand: 'brand 1',
-  // color: ['black','orange','blue'],
-  // size: ['S','M','L','XL','XXL'],
-  // isActive:true,
-  // isFeatured:false,
-  // imageUrl: '/assets/images/shirt.jpg',} as Product;
   constructor(
+    private cartService:CartService,
     private productService: ProductsService,
     private route: ActivatedRoute
   ) {}
@@ -37,5 +29,8 @@ export class ProductDetailComponent implements OnInit {
       ];
     }
     return [this.product.price];
+  }
+  addToCart(){
+    this.cartService.addProduct(this.product._id)
   }
 }

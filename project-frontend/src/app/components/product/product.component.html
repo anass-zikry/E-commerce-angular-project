@@ -6,5 +6,5 @@
     <p>{{ product.price * (1 - product.discountRatio) | currency }}</p>
     <del>{{ product.price | currency }}</del>
   </div>
-  <button (click)="add()">Add to cart</button>
+  <button (click)="add()">{{buttonTitle}}</button>
 </div>

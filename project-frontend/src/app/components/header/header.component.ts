@@ -20,8 +20,8 @@ export class HeaderComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-  
   select(event:any){
+    if(event.target.value == ""){return;}
     if(event.target.value == 'logout'){
       this.user.logout();
       event.target.value = "/";

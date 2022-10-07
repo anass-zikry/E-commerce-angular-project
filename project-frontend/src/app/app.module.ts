@@ -20,6 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { authInterceptor } from './services/auth.interceptor';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { AdminSignupComponent } from './components/admin-signup/admin-signup.component';
+import { AdminBrowseProductsComponent } from './components/admin-browse-products/admin-browse-products.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { AdminSignupComponent } from './components/admin-signup/admin-signup.com
     ProductsComponent,
     ProductComponent,
     AddProductComponent,
-    AdminSignupComponent
+    AdminSignupComponent,
+    AdminBrowseProductsComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

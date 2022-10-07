@@ -38,7 +38,7 @@ export class AddProductComponent implements OnInit {
   productform: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.maxLength(30)]),
     price: new FormControl(null, [Validators.required, Validators.min(0)]),
-    discountRatio: new FormControl(0, [Validators.required, Validators.min(0)]),
+    discountRatio: new FormControl(0, [Validators.required, Validators.min(0),Validators.max(1)]),
     category: new FormControl('', [Validators.required]),
     brand: new FormControl('', [Validators.required]),
     color: new FormControl('', [Validators.required]),
@@ -65,6 +65,7 @@ export class AddProductComponent implements OnInit {
     });
 
     this.product.addProduct(this.productform.value);
+    this.product.getProducts()
   }
   colorSelect(event: any) {
     if (this.selectedColors.find((x) => x == event.target.value)) {
@@ -72,8 +73,23 @@ export class AddProductComponent implements OnInit {
       this.selectedColors.push(event.target.value);
     }
   }
-  deleteColors() {
-    this.selectedColors = [];
+  getAvailableColor(): string[] {
+    let avColor: string[] = [];
+    this.colors.map((x) => {
+      let index = this.selectedColors.findIndex((y) => x == y);
+      if (index < 0) {
+        avColor.push(x);
+      }
+    });
+    return avColor;
+  }
+  deleteColor(color: string) {
+    this.selectedColors.splice(
+      this.selectedColors.findIndex((x) => {
+        return x == color;
+      }),
+      1
+    );
   }
   sizeSelect(event: any) {
     if (this.selectedSizes.find((x) => x == event.target.value)) {
@@ -81,8 +97,23 @@ export class AddProductComponent implements OnInit {
       this.selectedSizes.push(event.target.value);
     }
   }
-  deleteSizes() {
-    this.selectedSizes = [];
+  getAvailableSize(): string[] {
+    let avSize: string[] = [];
+    this.sizes.map((x) => {
+      let index = this.selectedSizes.findIndex((y) => x == y);
+      if (index < 0) {
+        avSize.push(x);
+      }
+    });
+    return avSize;
+  }
+  deleteSize(size: string) {
+    this.selectedSizes.splice(
+      this.selectedSizes.findIndex((x) => {
+        return x == size;
+      }),
+      1
+    );
   }
   getDisableButton(): boolean {
     return !(

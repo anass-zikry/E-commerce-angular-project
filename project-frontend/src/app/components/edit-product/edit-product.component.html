@@ -1,0 +1,98 @@
+<div class="edit-product">
+  <img [src]="product.imageUrl" alt="" id="productImg" />
+  <h4>Id: {{ product._id }}</h4>
+  <form action="">
+    <label for="name">Name:</label>
+    <!-- <p class="old-data">{{product.name}}</p> -->
+    <input type="text" name="name" [(ngModel)]="product.name" required /><br />
+    <label for="price">Price:</label>
+    <!-- <p class="old-data">{{product.price | currency}}</p> -->
+    <input
+      type="number"
+      name="price"
+      required
+      [(ngModel)]="product.price"
+    /><br />
+    <label for="discount">Discount:</label>
+    <!-- <p class="old-data">{{product.discountRatio *100 | percent}}</p> -->
+    <input
+      type="number"
+      name="discount"
+      required
+      [(ngModel)]="product.discountRatio"
+    /><br />
+    <label for="category">Category:</label>
+    <!-- <p class="old-data">{{product.category}}</p> -->
+    <select name="category" [(ngModel)]="product.category">
+      <!-- <option value="{{null}}" selected disabled>Category</option> -->
+      <option
+        *ngFor="let c of getCategoryTitles()"
+        [value]="c"
+        [selected]="c == product.category"
+      >
+        {{ c }}
+      </option></select
+    ><br />
+    <label for="brand">Brand:</label>
+    <!-- <p class="old-data">{{product.brand}}</p> -->
+    <select name="brand" [(ngModel)]="product.brand">
+      <!-- <option value="{{null}}" selected disabled>Brand</option> -->
+      <option
+        *ngFor="let b of getBrandTitles()"
+        [value]="b"
+        [selected]="b == product.brand"
+      >
+        {{ b }}
+      </option></select
+    ><br />
+    <label for="size">Size:</label>
+    <div class="flex-row">
+      <div *ngFor="let s of product.size" class="flex-row">
+        <p class="old-data">{{ s }}</p>
+        <img
+          src="assets/images/red-x.webp"
+          (click)="deleteSize(s)"
+          class="red-x"
+        />
+      </div>
+    </div>
+    <select name="size" (change)="addSize($event)">
+      <option value="{{ null }}" selected>Size</option>
+      <option [value]="s" *ngFor="let s of getAvailableSize()">
+        {{ s }}
+      </option></select
+    ><br />
+    <label for="color">Color:</label>
+    <div class="flex-row">
+      <div *ngFor="let c of product.color" class="flex-row">
+        <p class="old-data">{{ c }}</p>
+        <img
+          src="assets/images/red-x.webp"
+          (click)="deleteColor(c)"
+          class="red-x"
+        />
+      </div>
+    </div>
+    <select name="size" (change)="addColor($event)">
+      <option value="{{ null }}" selected>Color</option>
+      <option [value]="c" *ngFor="let c of getAvailableColor()">
+        {{ c }}
+      </option></select
+    ><br />
+    <input type="checkbox" [(ngModel)]="product.isActive" name="active" />
+    <label for="active">Active</label><br />
+    <input type="checkbox" [(ngModel)]="product.isFeatured" name="featured" />
+    <label for="featured">Featured</label><br />
+    <label for="imageUrl">Image Url:</label>
+    <!-- <p class="old-data">{{product.imageUrl}}</p> -->
+    <input
+      type="text"
+      name="imageUrl"
+      required
+      [(ngModel)]="product.imageUrl"
+    /><br />
+    <p>{{ validateMessage }}</p>
+    <br />
+    <button type="submit" (click)="submit()">Edit Product</button>
+  </form>
+</div>

@@ -32,21 +32,38 @@
         <option value="{{b}}" *ngFor="let b of getBrandTitles()" >{{b}}</option>
     </select>
     <br>
-    {{selectedColors | json}}<button (click)="deleteColors()" type="button">Remove</button>
+    <div class="flex-row">
+        <div *ngFor="let c of selectedColors" class="flex-row">
+          <p class="old-data">{{ c }}</p>
+          <img
+            src="assets/images/red-x.webp"
+            (click)="deleteColor(c)"
+            class="red-x"
+          />
+        </div>
+      </div>
     <br>
     <label for="color">Color</label>
-    <!-- <input type="text" name="color"> -->
     <select name="color" (change)="colorSelect($event)" formControlName="color">
         <option value="{{null}}" selected disabled>Color</option>
-        <option value="{{c}}" *ngFor="let c of colors" >{{c}}</option>
+        <option value="{{c}}" *ngFor="let c of getAvailableColor()" >{{c}}</option>
     </select>
     <br>
-    {{selectedSizes | json}}<button (click)="deleteSizes()" type="button">Remove</button>
+    <div class="flex-row">
+        <div *ngFor="let s of selectedSizes" class="flex-row">
+          <p class="old-data">{{ s }}</p>
+          <img
+            src="assets/images/red-x.webp"
+            (click)="deleteSize(s)"
+            class="red-x"
+          />
+        </div>
+      </div>
     <br>
     <label for="size">Size</label>
     <select name="size" (change)="sizeSelect($event)" formControlName="size">
         <option value="{{null}}" selected disabled>Size</option>
-        <option value="{{s}}" *ngFor="let s of sizes" >{{s}}</option>
+        <option value="{{s}}" *ngFor="let s of getAvailableSize()" >{{s}}</option>
     </select>
     <br>
     <input type="checkbox" name="isFeatured" formControlName="isFeatured">

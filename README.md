@@ -6,3 +6,4 @@
 #### run backend app using "nodemon server.js" command in backend folder.
 #### run frontend angular app using "ng serve" command in project-frontend folder.
 #### to add an admin account go to "/admin-register"
+#### when adding a product store image in src/assetc/images and in imageUrl "assets/images/imageName"

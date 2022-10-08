@@ -79,10 +79,10 @@ class CartService {
   async deleteCart(user) {
     let cart = new Cart();
     if (!(await this.cartExist(user._id)))
-      return { message: "Cart doesnot exist" };
+      return { message: "Cart doesnot exist" ,success:false};
     const cartId = await this.findCart(user._id).then((c) => c._id);
     await cart.deleteOne(cartId);
-    return { message: "Cart deleted!" };
+    return { message: "Cart deleted!" ,success:true};
   }
 
   async findCart(id) {

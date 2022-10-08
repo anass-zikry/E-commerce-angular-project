@@ -41,7 +41,7 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
     AddProductComponent,
     AdminSignupComponent,
     AdminBrowseProductsComponent,
-    EditProductComponent
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,

@@ -126,7 +126,14 @@ export class CartService {
           });
           this.cart.cartItems.splice(index, 1);
         }
+        if(this.cart.cartItems.length == 0){
+          this.delete();
+          this.router.navigateByUrl('/');
+        }
       });
+  }
+  delete(){
+    this.http.delete(`${environment.websiteURL}/delete-cart`).subscribe();
   }
   getTotal(): void {
     if (!this.cart.cartItems) {

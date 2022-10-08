@@ -4,7 +4,7 @@
     <ul>
       <li
         class="cart-list-item"
-        *ngFor="let item of getCart().cartItems; let i = index"
+        *ngFor="let item of getCart().cartItems ; index as i"
       >
         <div class="list-p1">
           <img [src]="item.product.imageUrl" alt="" />

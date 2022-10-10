@@ -1,0 +1,151 @@
+<form>
+  <div class="filter">
+    <h3>Filter by price</h3>
+
+    <div class="control-checkbox">
+      <input
+        type="checkbox"
+        class="control-input"
+        id="price1"
+        [checked]="allPrice"
+        (change)="priceHandler(0,$event)"
+      />
+      <label for="price1" class="control-label">All Price</label>
+      <span class="filter-count">1000</span>
+    </div>
+
+    <div class="control-checkbox">
+      <input
+        type="checkbox"
+        class="control-input"
+        id="price2"
+        (change)="priceHandler(100, $event)"
+      />
+      <label for="price2" class="control-label">$0 - $100</label>
+      <span class="filter-count">1000</span>
+    </div>
+
+    <div class="control-checkbox">
+      <input
+        type="checkbox"
+        class="control-input"
+        id="price3"
+        (change)="priceHandler(200, $event)"
+      />
+      <label for="price3" class="control-label">$100 - $200</label>
+      <span class="filter-count">1000</span>
+    </div>
+
+    <div class="control-checkbox">
+      <input
+        type="checkbox"
+        class="control-input"
+        id="price4"
+        (change)="priceHandler(300, $event)"
+      />
+      <label for="price4" class="control-label">$200 - $300</label>
+      <span class="filter-count">1000</span>
+    </div>
+
+    <div class="control-checkbox">
+      <input
+        type="checkbox"
+        class="control-input"
+        id="price5"
+        (change)="priceHandler(400, $event)"
+      />
+      <label for="price5" class="control-label">$300 - $400</label>
+      <span class="filter-count">1000</span>
+    </div>
+
+    <h3>Filter by color</h3>
+
+    <div class="control-checkbox">
+      <input
+        type="checkbox"
+        class="control-input"
+        id="color1"
+        value="allColor"
+        [checked]="allColor"
+        (change)="colorHandler($event)"
+      />
+      <label for="color1" class="control-label">All color</label>
+      <span class="filter-count">1000</span>
+    </div>
+
+    <div class="control-checkbox" *ngFor="let c of allColors">
+      <input
+        type="checkbox"
+        class="control-input"
+        id="color2"
+        [value]="c"
+        (change)="colorHandler($event)"
+      />
+      <label for="color2" class="control-label">{{ c }}</label>
+      <span class="filter-count">1000</span>
+    </div>
+
+    <!-- <div class="control-checkbox">
+      <input type="checkbox" class="control-input" id="color3" value="white" (change)="colorHandler($event)" />
+      <label for="color3" class="control-label">white</label>
+      <span class="filter-count">1000</span>
+    </div>
+
+    <div class="control-checkbox">
+      <input type="checkbox" class="control-input" id="color4" value="green" (change)="colorHandler($event)" />
+      <label for="color4" class="control-label">green</label>
+      <span class="filter-count">1000</span>
+    </div>
+
+    <div class="control-checkbox">
+      <input type="checkbox" class="control-input" id="color5" value="red" (change)="colorHandler($event)" />
+      <label for="color5" class="control-label">red</label>
+      <span class="filter-count">1000</span>
+    </div> -->
+
+    <h3>Filter by color</h3>
+
+    <div class="control-checkbox">
+      <input
+        type="checkbox"
+        class="control-input"
+        id="size1"
+        value="allSize"
+        [checked]="allSize"
+        (change)="sizeHandler($event)"
+      />
+      <label for="size1" class="control-label">All size</label>
+      <span class="filter-count">1000</span>
+    </div>
+
+    <div class="control-checkbox" *ngFor="let s of allSizes">
+      <input
+        type="checkbox"
+        class="control-input"
+        id="size2"
+        [value]="s"
+        (change)="sizeHandler($event)"
+      />
+      <label for="size2" class="control-label">{{ s }}</label>
+      <span class="filter-count">1000</span>
+    </div>
+
+    <!-- <div class="control-checkbox">
+      <input type="checkbox" class="control-input" id="size3" value="M" (change)="sizeHandler($event)" />
+      <label for="size3" class="control-label">M</label>
+      <span class="filter-count">1000</span>
+    </div>
+
+    <div class="control-checkbox">
+      <input type="checkbox" class="control-input" id="size4" value="L" (change)="sizeHandler($event)" />
+      <label for="size4" class="control-label">L</label>
+      <span class="filter-count">1000</span>
+    </div>
+
+    <div class="control-checkbox">
+      <input type="checkbox" class="control-input" id="size5" value="XL" (change)="sizeHandler($event)" />
+      <label for="size5" class="control-label">XL</label>
+      <span class="filter-count">1000</span>
+    </div> -->
+  </div>
+</form>

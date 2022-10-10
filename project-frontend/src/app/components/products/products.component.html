@@ -1,5 +1,5 @@
 <div class="main-content">
-  <ng-container *ngFor="let product of products">
+  <ng-container *ngFor="let product of getProducts()">
     <app-product [product]="product" (addToCart)="addToCartHandler($event)"></app-product>
   </ng-container>
 </div>

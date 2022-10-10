@@ -11,12 +11,16 @@ import { ProductsService } from 'src/app/services/products.service';
 export class AdminBrowseProductsComponent implements OnInit {
   products:Array<Product> = [];
   constructor(private productService: ProductsService,private router:Router) {
-    this.productService.retrieveProducts().subscribe((response: any) => {
-      this.products = response;
-    });
+
+    // this.productService.retrieveProducts().subscribe((response: any) => {
+    //   this.products = response;
+    // });
   }
 
   ngOnInit(): void {}
+  getProducts(){
+    return this.productService.thisProducts;
+  }
   editHandler(productId:string){
     this.router.navigate(['/edit-product', { id: productId }], {
       // relativeTo: this.route,

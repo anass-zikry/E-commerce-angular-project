@@ -1,0 +1,12 @@
+<div class="main-content">
+  <app-filter
+    (pricesEmitter)="selectedPrices($event)"
+    (colorsEmitter)="selectedColors($event)"
+    (sizesEmitter)="selectedSizes($event)"
+  ></app-filter>
+  <app-products
+    [selectedPrices]="getPricesList()"
+    [selectedColors]="getColorsList()"
+    [selectedSizes]="getSizesList()"
+  ></app-products>
+</div>

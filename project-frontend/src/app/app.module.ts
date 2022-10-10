@@ -22,6 +22,8 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { AdminSignupComponent } from './components/admin-signup/admin-signup.component';
 import { AdminBrowseProductsComponent } from './components/admin-browse-products/admin-browse-products.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { ShopComponent } from './components/shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
     AdminSignupComponent,
     AdminBrowseProductsComponent,
     EditProductComponent,
+    FilterComponent,
+    ShopComponent,
   ],
   imports: [
     BrowserModule,

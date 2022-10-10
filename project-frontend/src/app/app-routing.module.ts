@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ShopComponent } from './components/shop/shop.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AdminGuard } from './services/admin.guard';
@@ -31,7 +32,7 @@ const routes: Routes = [
     canActivate: [AuthGuard, AdminGuard],
   },
   { path: 'admin-register', component: AdminSignupComponent },
-  { path: 'browse-products', component: ProductsComponent },
+  { path: 'shop', component: ShopComponent },
   {
     path: 'admin-browse-products',
     component: AdminBrowseProductsComponent,

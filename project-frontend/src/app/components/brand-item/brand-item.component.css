@@ -1,0 +1,24 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 20px;
+}
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-between;
+    margin-bottom: 6px;
+}
+button {
+    font-size: larger;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 6px;
+    margin: 4px;
+    margin-left: auto;
+}
+div p {
+    font-size: large;
+}

@@ -51,10 +51,10 @@ export class AddProductComponent implements OnInit {
     return this.product.addProductMessage;
   }
   getCategoryTitles() {
-    return this.category.categoryTitlesArr;
+    return this.category.thisCategories;
   }
   getBrandTitles(): string[] {
-    return this.brand.brandsArr.map((v, i) => {
+    return this.brand.thisBrands.map((v, i) => {
       return v.title;
     });
   }

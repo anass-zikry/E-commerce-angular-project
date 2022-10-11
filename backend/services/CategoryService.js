@@ -1,10 +1,10 @@
 const { Category } = require("../DB/Category");
 
 class CategoryService {
-  async addCategory(title, productsArr = []) {
+  async addCategory(title) {
     let category = new Category();
     if (await this.findCategory(title)) return { message: "Category already exist!" ,success:false};
-    const data = { title: title, products: productsArr };
+    const data = { title: title };
     await category.insertOne(data);
     return { message: "Category created!" ,success:true};
   }

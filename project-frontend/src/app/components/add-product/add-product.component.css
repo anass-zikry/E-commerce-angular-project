@@ -1,13 +1,50 @@
+select {
+    font-size: large;
+    width: 125px;
+}
 .flex-row {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    margin-bottom: 6px;
 }
 .red-x {
     max-width: 20px;
+    margin-left: 4px;
 }
 .red-x:hover {
     cursor: pointer;
 }
 div p {
     font-size: large;
+}
+.add-product {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: 4vh;
+    align-items: center;
+}
+.content-line {
+    margin: 20px;
+    min-width: 45vw;
+}
+input {
+    font-size: large;
+    width: 200px;
+}
+.checkbox {
+    width: 30px;
+}
+label {
+    font-size: large;
+    margin-right: 6px;
+}
+button {
+    font-size: larger;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 6px;
+    margin: 4px;
+    float: right;
 }

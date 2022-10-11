@@ -1,8 +1,15 @@
 <div class="edit-product">
   <img [src]="product.imageUrl" alt="" id="productImg" />
   <h4>Id: {{ product._id }}</h4>
-  <button>Delete Product</button>
-  <div class="delete-confirm"></div>
+  <button (click)="deleteMessage()">Delete Product</button>
+  <div class="delete-confirm" *ngIf="delConfirm">
+    <h3>Are you sure you want to delete this product?</h3>
+    <h3>{{delState}}</h3>
+    <div class="flex-row">
+      <button (click)="deleteProduct()">Delete</button>
+      <button (click)="cancelDeleteMessage()">Cancel</button>
+    </div>
+  </div>
   <form action="">
     <div class="content-line">
       <label for="name">Name:</label>
@@ -32,7 +39,7 @@
         <option
           *ngFor="let c of getCategoryTitles()"
           [value]="c"
-          [selected]="c == product.category"
+          [selected]="c.title == product.category"
         >
           {{ c }}
         </option>
@@ -91,11 +98,21 @@
       </select>
     </div>
     <div class="content-line">
-      <input type="checkbox" [(ngModel)]="product.isActive" name="active" class="checkbox"/>
+      <input
+        type="checkbox"
+        [(ngModel)]="product.isActive"
+        name="active"
+        class="checkbox"
+      />
       <label for="active">Active</label>
     </div>
     <div class="content-line">
-      <input type="checkbox" [(ngModel)]="product.isFeatured" name="featured" class="checkbox"/>
+      <input
+        type="checkbox"
+        [(ngModel)]="product.isFeatured"
+        name="featured"
+        class="checkbox"
+      />
       <label for="featured">Featured</label>
     </div>
     <div class="content-line">

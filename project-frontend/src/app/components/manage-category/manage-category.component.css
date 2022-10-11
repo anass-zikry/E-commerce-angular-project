@@ -1,0 +1,34 @@
+.manage-category {
+    display: flex;
+    flex-direction: column;
+    margin: 4vh auto;
+    align-items: center;
+    
+}
+.items {
+    width: 40vw;
+    border: 2px solid black;
+    margin: 20px;
+}
+label {
+    font-size: large;
+    margin-right: 6px;
+}
+input {
+    font-size: large;
+    width: 200px;
+}
+button {
+    font-size: larger;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 6px;
+    margin: 4px;
+    float: right;
+}
+.add-category {
+    width: 40vw;
+}
+.add-category h3{
+    margin-bottom: 10px;
+}

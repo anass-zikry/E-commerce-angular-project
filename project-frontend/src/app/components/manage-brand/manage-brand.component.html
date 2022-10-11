@@ -1,0 +1,18 @@
+<div class="manage-brand">
+    <div class="items">
+      <app-brand-item
+        *ngFor="let b of getBrandTitles()"
+        [brandTitle]="b.title"
+        (deleteEmitter)="deleteBrand($event)"
+        [delState]="delState"
+      ></app-brand-item>
+    </div>
+    <div class="add-brand">
+      <h3>Add a new brand</h3>
+      <label for="brand">Title:</label>
+      <input type="text" name="brand" [(ngModel)]="newBrand" />
+      <button (click)="addBrand()">Add</button>
+      <p>{{addState}}</p>
+    </div>
+  </div>
+  

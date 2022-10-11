@@ -3,8 +3,8 @@ const {CategoryService} = require("../services/CategoryService")
 class CategoryController {
     async create(req,res){
         let category = new CategoryService();
-        const {title,products} = req.body;
-        res.json(await category.addCategory(title,products));
+        const {title} = req.body;
+        res.json(await category.addCategory(title));
     }
     async edit(req,res){
         let category = new CategoryService();

@@ -9,10 +9,9 @@ import { Category } from '../interfaces/category';
 //dont forget to update category products array in db when a product is added
 export class CategoryService {
   categories: Array<Category> = [];
-  categoryTitles: string[] = [];
-  constructor(private http: HttpClient) {}
-  get categoryTitlesArr(){
-    return this.categoryTitles;
+  constructor(private http: HttpClient) {this.fetchCategories()}
+  get thisCategories(){
+    return this.categories;
   }
   // getCategories() {
   //   let cats: string[] = [];
@@ -26,10 +25,12 @@ export class CategoryService {
       .get(`${environment.adminURL}/list-categories`)
       .subscribe((response: any) => {
         this.categories = response;
-        let counter = 0;
-        for (let c of this.categories) {
-          this.categoryTitles[counter] = c.title;
-        }
       });
+  }
+  add(title:string){
+    return this.http.post(`${environment.adminURL}/add-category`,JSON.stringify({title:title}))
+  }
+  delete(title:string){
+    return this.http.post(`${environment.adminURL}/delete-category`,JSON.stringify({title:title}));
   }
 }

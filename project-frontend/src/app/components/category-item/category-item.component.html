@@ -1,0 +1,12 @@
+<div class="item">
+  <div class="flex-row">
+    <h4>{{ categoryTitle }}</h4>
+    <button (click)="confirmDelete()">Delete</button>
+  </div>
+  <div *ngIf="delConfirm">
+    <p>Are you sure you want to delete this category?</p>
+    <button (click)="deleteCategory()">Delete</button>
+    <button (click)="cancelDelete()">Cancel</button>
+    <p>{{ delState }}</p>
+  </div>
+</div>

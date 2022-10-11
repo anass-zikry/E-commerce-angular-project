@@ -8,6 +8,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { HomeComponent } from './components/home/home.component';
+import { ManageBrandComponent } from './components/manage-brand/manage-brand.component';
+import { ManageCategoryComponent } from './components/manage-category/manage-category.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -41,6 +43,16 @@ const routes: Routes = [
   {
     path: 'edit-product',
     component: EditProductComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  {
+    path: 'manage-category',
+    component: ManageCategoryComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  {
+    path: 'manage-brand',
+    component: ManageBrandComponent,
     canActivate: [AuthGuard, AdminGuard],
   },
 ];

@@ -1,0 +1,12 @@
+<div class="item">
+  <div class="flex-row">
+    <h4>{{ brandTitle }}</h4>
+    <button (click)="confirmDelete()">Delete</button>
+  </div>
+  <div *ngIf="delConfirm">
+    <p>Are you sure you want to delete this brand?</p>
+    <button (click)="deleteBrand()">Delete</button>
+    <button (click)="cancelDelete()">Cancel</button>
+    <p>{{ delState }}</p>
+  </div>
+</div>

@@ -24,6 +24,10 @@ import { AdminBrowseProductsComponent } from './components/admin-browse-products
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { ShopComponent } from './components/shop/shop.component';
+import { ManageCategoryComponent } from './components/manage-category/manage-category.component';
+import { ManageBrandComponent } from './components/manage-brand/manage-brand.component';
+import { CategoryItemComponent } from './components/category-item/category-item.component';
+import { BrandItemComponent } from './components/brand-item/brand-item.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +50,10 @@ import { ShopComponent } from './components/shop/shop.component';
     EditProductComponent,
     FilterComponent,
     ShopComponent,
+    ManageCategoryComponent,
+    ManageBrandComponent,
+    CategoryItemComponent,
+    BrandItemComponent,
   ],
   imports: [
     BrowserModule,

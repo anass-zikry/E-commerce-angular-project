@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { BrandService } from 'src/app/services/brand.service';
 import { CategoryService } from 'src/app/services/category.service';
@@ -13,7 +13,8 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class EditProductComponent implements OnInit {
   product: Product = {} as Product;
-
+  delConfirm:boolean = false;
+  delState:string = '';
   colors: string[] = [
     'blue',
     'red',
@@ -31,7 +32,8 @@ export class EditProductComponent implements OnInit {
     private category: CategoryService,
     private brand: BrandService,
     private route: ActivatedRoute,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private router:Router
   ) {
     if (this.getCategoryTitles.length == 0) {
       this.category.fetchCategories();
@@ -67,10 +69,10 @@ export class EditProductComponent implements OnInit {
     this.activate = true;
   }
   getCategoryTitles() {
-    return this.category.categoryTitlesArr;
+    return this.category.thisCategories;
   }
   getBrandTitles(): string[] {
-    return this.brand.brandsArr.map((v, i) => {
+    return this.brand.thisBrands.map((v, i) => {
       return v.title;
     });
   }
@@ -140,5 +142,22 @@ export class EditProductComponent implements OnInit {
       console.log(this.product);
       this.productService.modifyProduct(this.product)
     }
+  }
+  deleteMessage(){
+    this.delConfirm = true;
+  }
+  deleteProduct(){
+    this.productService.delete(this.product._id).subscribe((response:any)=>{
+      if(response.success){
+        this.router.navigateByUrl('/admin-browse-products');
+      }
+      else{
+        this.delState = response.message;
+      }
+    });
+    
+  }
+  cancelDeleteMessage(){
+    this.delConfirm = false;
   }
 }

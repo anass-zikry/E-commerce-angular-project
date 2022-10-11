@@ -14,8 +14,10 @@
           <select (change)="select($event)">
             <option value="{{null}}" selected class="profile"><img src="assets/images/profile.png" alt=""></option>
             <option value="profile">Profile</option>
-            <option *ngIf="getIsAdmin()" value="add-product">Manage Products</option>
-            <option value="admin-browse-products">Browse Products</option>
+            <option *ngIf="getIsAdmin()" value="manage-category">Manage Category</option>
+            <option *ngIf="getIsAdmin()" value="manage-brand">Manage Brand</option>
+            <option *ngIf="getIsAdmin()" value="add-product">Add Product</option>
+            <option value="admin-browse-products">Manage Products</option>
             <option value="logout">Log out</option>
           </select>
           <!-- <ul>

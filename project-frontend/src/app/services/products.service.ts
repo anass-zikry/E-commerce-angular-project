@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
@@ -35,14 +35,17 @@ export class ProductsService {
       .subscribe((response: any) => {
         if (response.success) {
           this.productMessage = response.message;
+          this.retrieveProducts();
         }
+        
       });
   }
-  deleteProduct(id: string) {
+  delete(id: string) {
     this.products.splice(
       this.products.findIndex((x) => x._id == id),
       1
     );
+    return this.http.post(`${environment.adminURL}/del-product`,JSON.stringify({id:id}));
   }
   modifyProduct(product: Product) {
     this.http
@@ -83,7 +86,7 @@ export class ProductsService {
   ): Array<Product> {
     return this.products.filter((p) => {
       return (
-        this.priceInRange((p.price * (1 - p.discountRatio)), selectedPrices) &&
+        this.priceInRange(p.price * (1 - p.discountRatio), selectedPrices) &&
         this.colorInRange(p.color, selectedColors) &&
         this.sizeInRange(p.size, selectedSizes)
       );
@@ -102,7 +105,7 @@ export class ProductsService {
     let exist: boolean = false;
     for (let productcolor of color) {
       for (let c of selectedColors) {
-        if(productcolor == c)exist = true;
+        if (productcolor == c) exist = true;
       }
     }
     return exist;

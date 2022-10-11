@@ -1,0 +1,17 @@
+<div class="manage-category">
+  <div class="items">
+    <app-category-item
+      *ngFor="let c of getCategoryTitles()"
+      [categoryTitle]="c.title"
+      (deleteEmitter)="deleteCategory($event)"
+      [delState]="delState"
+    ></app-category-item>
+  </div>
+  <div class="add-category">
+    <h3>Add a new category</h3>
+    <label for="category">Title:</label>
+    <input type="text" name="category" [(ngModel)]="newCategory" />
+    <button (click)="addCategory()">Add</button>
+    <p>{{addState}}</p>
+  </div>
+</div>

@@ -13,7 +13,7 @@ let category = new CategoryController();
 //Product
 adminApp.post("/find-product", product.find);
 adminApp.get("/browse-products", product.listAll);
-adminApp.delete("/del-product", product.delete);
+adminApp.post("/del-product", product.delete);
 adminApp.post("/mod-product", product.modify);
 adminApp.post("/add-product", product.add);
 //Users
@@ -28,12 +28,12 @@ adminApp.get("/verify-admin",user.verifyAdmin)
 //Brand
 adminApp.post("/add-brand", brand.create);
 adminApp.post("/edit-brand", brand.edit);
-adminApp.delete("/delete-brand", brand.delete);
+adminApp.post("/delete-brand", brand.delete);
 adminApp.get("/list-brands", brand.list);
 //Category
 adminApp.post("/add-category",category.create)
 adminApp.post("/edit-category",category.edit)
-adminApp.delete("/delete-category",category.delete)
+adminApp.post("/delete-category",category.delete)
 adminApp.get("/list-categories",category.list)
 
 

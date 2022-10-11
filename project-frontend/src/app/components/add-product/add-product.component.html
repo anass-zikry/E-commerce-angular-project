@@ -1,7 +1,7 @@
-<div>
-<h2>Add Product</h2>
-<form [formGroup]="productform" (ngSubmit)="addProduct()">
-    {{productform.status | json}}
+<div class="add-product">
+  <h2>Add Product</h2>
+  <form [formGroup]="productform" (ngSubmit)="addProduct()">
+    {{ productform.status | json }}
     <!-- {{productform.controls['price'].errors |json}}
     {{productform.controls['discountRatio'].errors |json}}
     {{productform.controls['category'].errors |json}}
@@ -9,30 +9,43 @@
     {{productform.controls['color'].errors |json}}
     {{productform.controls['size'].errors |json}}
     {{productform.controls['imageUrl'].errors |json}} -->
-    <br>
-    <label for="product-name">Product name:</label>
-    <input type="text" name="product-name" formControlName="name">
-    <br>
-    <label for="price">Price</label>
-    <input type="number" name="price" formControlName="price">
-    <br>
-    <label for="discountRatio">Discount</label>
-    <input type="number" name="discountRatio" formControlName="discountRatio">
-    <br>
-    <!-- <label for="category">Category</label> -->
-    <label for="category">Category</label>
-    <select name="category" id="" formControlName="category">
-        <option value="{{null}}" selected disabled>Category</option>
-        <option value="{{c}}" *ngFor="let c of getCategoryTitles()" >{{c}}</option>
-    </select>
-    <br>
-    <label for="brand">Brand</label>
-    <select name="brand" formControlName="brand">
-        <option value="{{null}}" selected disabled>Brand</option>
-        <option value="{{b}}" *ngFor="let b of getBrandTitles()" >{{b}}</option>
-    </select>
-    <br>
-    <div class="flex-row">
+    <div class="content-line">
+      <label for="product-name">Product name:</label>
+      <input type="text" name="product-name" formControlName="name" />
+    </div>
+    <div class="content-line">
+      <label for="price">Price</label>
+      <input type="number" name="price" formControlName="price" />
+    </div>
+    <div class="content-line">
+      <label for="discountRatio">Discount</label>
+      <input
+        type="number"
+        name="discountRatio"
+        formControlName="discountRatio"
+      />
+    </div>
+    <div class="content-line">
+      <!-- <label for="category">Category</label> -->
+      <label for="category">Category</label>
+      <select name="category" id="" formControlName="category">
+        <option value="{{ null }}" selected disabled>Category</option>
+        <option value="{{ c.title }}" *ngFor="let c of getCategoryTitles()">
+          {{ c.title }}
+        </option>
+      </select>
+    </div>
+    <div class="content-line">
+      <label for="brand">Brand</label>
+      <select name="brand" formControlName="brand">
+        <option value="{{ null }}" selected disabled>Brand</option>
+        <option value="{{ b }}" *ngFor="let b of getBrandTitles()">
+          {{ b }}
+        </option>
+      </select>
+    </div>
+    <div class="content-line">
+      <div class="flex-row">
         <div *ngFor="let c of selectedColors" class="flex-row">
           <p class="old-data">{{ c }}</p>
           <img
@@ -42,14 +55,22 @@
           />
         </div>
       </div>
-    <br>
-    <label for="color">Color</label>
-    <select name="color" (change)="colorSelect($event)" formControlName="color">
-        <option value="{{null}}" selected disabled>Color</option>
-        <option value="{{c}}" *ngFor="let c of getAvailableColor()" >{{c}}</option>
-    </select>
-    <br>
-    <div class="flex-row">
+    </div>
+    <div class="content-line">
+      <label for="color">Color</label>
+      <select
+        name="color"
+        (change)="colorSelect($event)"
+        formControlName="color"
+      >
+        <option value="{{ null }}" selected disabled>Color</option>
+        <option value="{{ c }}" *ngFor="let c of getAvailableColor()">
+          {{ c }}
+        </option>
+      </select>
+    </div>
+    <div class="content-line">
+      <div class="flex-row">
         <div *ngFor="let s of selectedSizes" class="flex-row">
           <p class="old-data">{{ s }}</p>
           <img
@@ -59,21 +80,26 @@
           />
         </div>
       </div>
-    <br>
-    <label for="size">Size</label>
-    <select name="size" (change)="sizeSelect($event)" formControlName="size">
-        <option value="{{null}}" selected disabled>Size</option>
-        <option value="{{s}}" *ngFor="let s of getAvailableSize()" >{{s}}</option>
-    </select>
-    <br>
-    <input type="checkbox" name="isFeatured" formControlName="isFeatured">
-    <label for="isFeatured">Featured</label>
-    <br>
-    <label for="imageUrl">Image URL</label>
-    <input type="text" name="imageUrl" formControlName="imageUrl" >
-    <br>
+    </div>
+    <div class="content-line">
+      <label for="size">Size</label>
+      <select name="size" (change)="sizeSelect($event)" formControlName="size">
+        <option value="{{ null }}" selected disabled>Size</option>
+        <option value="{{ s }}" *ngFor="let s of getAvailableSize()">
+          {{ s }}
+        </option>
+      </select>
+    </div>
+    <div class="content-line">
+      <input type="checkbox" class="checkbox" name="isFeatured" formControlName="isFeatured" />
+      <label for="isFeatured">Featured</label>
+    </div>
+    <div class="content-line">
+      <label for="imageUrl">Image URL</label>
+      <input type="text" name="imageUrl" formControlName="imageUrl" placeholder="ex: assets/images/shirt.jpg"/>
+    </div>
     <button type="submit" [disabled]="getDisableButton()">Add Product</button>
-    <br>
-    <p>{{getStatus()}}</p>
-</form>
+    <br />
+    <p>{{ getStatus() }}</p>
+  </form>
 </div>

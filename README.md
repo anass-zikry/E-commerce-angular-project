@@ -1,4 +1,5 @@
 # E-commerce-angular-project
+#### Team 8
 #### mongodb is required to be installed
 #### the backend use E-Commerce database in mongo on mongodb://localhost:27017
 #### to change database name go to backend\DB\Base.js and change DBName at top of file.
